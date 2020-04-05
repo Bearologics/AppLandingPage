@@ -1,0 +1,70 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Codextended",
+        "repositoryURL": "https://github.com/johnsundell/codextended.git",
+        "state": {
+          "branch": null,
+          "revision": "8d7c46dfc9c55240870cf5561d6cefa41e3d7105",
+          "version": "0.3.0"
+        }
+      },
+      {
+        "package": "Files",
+        "repositoryURL": "https://github.com/johnsundell/files.git",
+        "state": {
+          "branch": null,
+          "revision": "22fe84797d499ffca911ccd896b34efaf06a50b9",
+          "version": "4.1.1"
+        }
+      },
+      {
+        "package": "Ink",
+        "repositoryURL": "https://github.com/johnsundell/ink.git",
+        "state": {
+          "branch": null,
+          "revision": "878fd897945500be1885f2c88f81f8f909224796",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "Plot",
+        "repositoryURL": "https://github.com/johnsundell/plot.git",
+        "state": {
+          "branch": null,
+          "revision": "e81e059e39603a6c01cd157bc8fb6f1ffbfa7cf5",
+          "version": "0.7.0"
+        }
+      },
+      {
+        "package": "Publish",
+        "repositoryURL": "https://github.com/johnsundell/publish.git",
+        "state": {
+          "branch": null,
+          "revision": "9458bacb992f1fde35648fd4bb379fb7335d571c",
+          "version": "0.5.0"
+        }
+      },
+      {
+        "package": "ShellOut",
+        "repositoryURL": "https://github.com/johnsundell/shellout.git",
+        "state": {
+          "branch": null,
+          "revision": "e1577acf2b6e90086d01a6d5e2b8efdaae033568",
+          "version": "2.3.0"
+        }
+      },
+      {
+        "package": "Sweep",
+        "repositoryURL": "https://github.com/johnsundell/sweep.git",
+        "state": {
+          "branch": null,
+          "revision": "801c2878e4c6c5baf32fe132e1f3f3af6f9fd1b0",
+          "version": "0.4.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
