@@ -8,7 +8,7 @@ let package = Package(
         .executable(name: "AppLandingPage", targets: ["AppLandingPage"])
     ],
     dependencies: [
-        .package(url: "https://github.com/johnsundell/publish.git", from: "0.5.0")
+        .package(url: "https://github.com/johnsundell/publish.git", from: "0.7.0")
     ],
     targets: [
         .target(
