@@ -4,7 +4,7 @@ A sample project for a static landing page for iOS apps, using Publish.
 
 ![Screenshot](.meta/screen.png)
 
-See the [live demo here](https://applandingpage.pages.dev).
+See the [live demo here](https://app-landingpage-demo.bearologics.dev/).
 
 ## 🚀 Getting started
 

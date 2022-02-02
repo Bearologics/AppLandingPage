@@ -17,7 +17,7 @@ struct AppLandingPage: Website {
     }
 
     // Update these properties to configure your website:
-    var url = URL(string: "https://applandingpage.pages.dev")!
+    var url = URL(string: "https://app-landingpage-demo.bearologics.dev/")!
     var name = "Fantasy App"
     var description = "A project I've been working on (in my dreams) for ages, soon available on iOS, iPadOS, macOS and also watchOS! Oh did I forget to mention tvOS?"
     var language: Language { .english }
