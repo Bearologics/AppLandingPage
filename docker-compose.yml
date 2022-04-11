@@ -1,7 +1,0 @@
-version: "3"
-services:
-  site:
-    build: .
-    restart: unless-stopped
-    ports:
-      - 8080:80
