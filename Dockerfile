@@ -3,5 +3,5 @@ WORKDIR /site
 COPY . .
 RUN swift run
 
-FROM nginx:alpine
-COPY --from=build /site/Output /usr/share/nginx/html
+FROM bearologics/nginx-static:0.3.0
+COPY --from=build /site/Output /app/html
