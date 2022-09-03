@@ -18,7 +18,7 @@ jobs:
         with:
           source: ./Output
           storageZoneName: ${{ secrets.BUNNY_CDN_STORAGE_ZONE_NAME }}
-          accessKey: ${{ secrets.BUNNY_CDN_ACCESS_KEY }}
+          accessKey: ${{ secrets.BUNNY_CDN_STORAGE_KEY }}
           zoneId: ${{ secrets.BUNNY_CDN_PULL_ZONE_ID }}
-          zoneKey: ${{ secrets.BUNNY_CDN_ACCESS_KEY }}
+          zoneKey: ${{ secrets.BUNNY_CDN_ZONE_KEY }}
           dangerouslyDeleteAllExistingData: true
