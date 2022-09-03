@@ -13,9 +13,12 @@ jobs:
         uses: actions/checkout@v1
       - name: Build Site
         run: swift run
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy to BunnyCDN
+        uses: Bearologics/BunnyAction@main
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./Output
-          cname: app-landingpage-demo.bearologics.dev
+          source: ./Output
+          storageZoneName: ${{ secrets.BUNNY_CDN_STORAGE_ZONE_NAME }}
+          accessKey: ${{ secrets.BUNNY_CDN_ACCESS_KEY }}
+          zoneId: ${{ secrets.BUNNY_CDN_PULL_ZONE_ID }}
+          zoneKey: ${{ secrets.BUNNY_CDN_ACCESS_KEY }}
+          dangerouslyDeleteAllExistingData: true
