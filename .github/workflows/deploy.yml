@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout Source
         uses: actions/checkout@v1
@@ -19,6 +19,4 @@ jobs:
           source: ./Output
           storageZoneName: ${{ secrets.BUNNY_CDN_STORAGE_ZONE_NAME }}
           accessKey: ${{ secrets.BUNNY_CDN_STORAGE_KEY }}
-          zoneId: ${{ secrets.BUNNY_CDN_PULL_ZONE_ID }}
-          zoneKey: ${{ secrets.BUNNY_CDN_ZONE_KEY }}
           dangerouslyDeleteAllExistingData: true
