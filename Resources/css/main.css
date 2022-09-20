@@ -115,32 +115,14 @@ p {
     }
 }
 
-.app-icon {
-    width: 90px;
-    margin: 0 auto;
-    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.1));
-    -webkit-filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.1));
-}
-
 .app-name {
     font-size: 35px;
-    font-weight: 200;
+    font-weight: 300;
     white-space: nowrap;
-}
-
-@media only screen and (min-width: 767px) {
-    .app-icon {
-        margin: 0;
-    }
-
-    .app-icon p {
-        margin-left: 2px;
-    }
 }
 
 .intro {
     max-width: 300px;
-    margin-top: 13%;
     margin-right: auto;
     margin-bottom: 40px;
     margin-left: auto;
@@ -149,22 +131,15 @@ p {
 @media only screen and (min-width: 767px) {
     .intro {
         max-width: 100%;
-        margin-top: 28%;
         margin-bottom: 40px;
     }
 }
 
 .intro h2 {
     margin-bottom: 20px;
-    font-size: 28px;
-    font-weight: 200;
-    line-height: 1.2;
-}
-
-@media only screen and (min-width: 580px) {
-    .intro h2 {
-        font-size: 30px;
-    }
+/*    font-size: 28px;*/
+    font-weight: 300;
+/*    line-height: 1.2;*/
 }
 
 .sidebar {
@@ -191,16 +166,8 @@ p {
     margin-bottom: 10px;
 }
 
-.footer p {
-    opacity: 0.7;
-}
-
 .credit {
     float: left;
-}
-
-.credit a {
-    opacity: 1;
 }
 
 .credit a:hover {
@@ -217,17 +184,19 @@ p {
 
 .links a,
 .links a:visited {
-    transition: opacity 0.5s ease-out;
     text-decoration: none;
-    opacity: 0.7;
     color: #d80b62;
 }
 
-.links a:hover,
-.links a:focus,
-.links a:visited:hover,
-.links a:visited:focus {
-    opacity: 1;
+@media only screen and (max-width: 767px) {
+    .credit {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .links {
+        text-align: center;
+    }
 }
 
 @media only screen and (min-width: 767px) {
@@ -241,7 +210,39 @@ p {
     }
 }
 
-.download {
-    text-decoration: underline !important;
+.app-icon a {
+  height: 100px;
+  width: 100px;
+  background-image: url(/images/icon.png);
+  background-size: cover;
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  border-radius: 24px;
+  position: relative;
 }
 
+.app-icon a:before,
+.app-icon a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: 100%;
+  -webkit-transform: scaleX(2) scaleY(1.05);
+  transform: scaleX(2) scaleY(1.05);
+  clip: rect(0, 66px, 100px, 34px);
+  z-index: -1;
+}
+
+.app-icon a:after {
+  -webkit-transform: scaleY(2) scaleX(1.05) rotate(90deg);
+  transform: scaleY(2) scaleX(1.05) rotate(90deg);
+}
+
+.appstore-icon {
+    width: 56px;
+}

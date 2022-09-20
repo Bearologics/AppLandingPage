@@ -13,7 +13,7 @@ public extension Theme {
 private struct LandingPageHTMLFactory<Site: Website>: HTMLFactory {
     func makeIndexHTML(for index: Index,
                        context: PublishingContext<Site>) throws -> HTML {
-        makeHTML(for: index, on: context.site) {
+        makeIndexHTML(for: index, on: context.site) {
             .div(
                 .class("responsive sidebar"),
                 .div(
@@ -27,7 +27,6 @@ private struct LandingPageHTMLFactory<Site: Website>: HTMLFactory {
                       context: PublishingContext<Site>) throws -> HTML {
         makeHTML(for: page, on: context.site) {
              .div(
-                 .class("responsive sidebar"),
                  .div(.contentBody(page.body))
              )
         }
@@ -59,7 +58,7 @@ private struct LandingPageHTMLFactory<Site: Website>: HTMLFactory {
 }
 
 private extension LandingPageHTMLFactory {
-    func makeHTML<T: Website>(for location: Location, on site: T, withBody body: () -> Node<HTML.BodyContext>) -> HTML {
+    func makeIndexHTML<T: Website>(for location: Location, on site: T, withBody body: () -> Node<HTML.BodyContext>) -> HTML {
         HTML(
             .lang(site.language),
             .head(for: location, on: site),
@@ -70,7 +69,7 @@ private extension LandingPageHTMLFactory {
                         .class("responsive intro-container"),
                         .div(
                             .class("app-icon"),
-                            .a(.href("/"), .img(.src("/images/icon.png")))
+                            .a(.href("/"))
                         ),
                         .p(.class("app-name"), .text(site.name)),
 
@@ -78,12 +77,74 @@ private extension LandingPageHTMLFactory {
                             .class("intro"),
                             .h2(.text(site.description))
                         ),
-                        .a(forAppStore: site.appStoreLink)
+                        .a(forAppStore: site.appStoreLink),
+                        .a(forTestFlight: site.testflightLink)
                     ),
                     body()
                 ),
                 .footer(for: location, on: site)
             )
+        )
+    }
+    
+    func makeHTML<T: Website>(for location: Location, on site: T, withBody body: () -> Node<HTML.BodyContext>) -> HTML {
+        HTML(
+            .lang(site.language),
+            .head(for: location, on: site),
+            .body(
+                .header(
+                    .class("container"),
+                    body()
+                ),
+                .footer(for: location, on: site)
+            )
+        )
+    }
+}
+
+private extension Node where Context == HTML.DocumentContext {
+    static func head<T: Website>(
+    for location: Location,
+    on site: T) -> Node {
+        var title = location.title
+
+        let stylesheetPaths = [
+            "/css/styles.css"
+        ]
+        
+        if title.isEmpty {
+            title = site.name
+        } else {
+            title.append(" | " + site.name)
+        }
+
+        var description = location.description
+
+        if description.isEmpty {
+            description = site.description
+        }
+
+        return .head(
+            .encoding(.utf8),
+            .siteName(site.name),
+            .url(site.url(for: location)),
+            .title(title),
+            .description(description),
+            .twitterCardType(location.imagePath == nil ? .summary : .summaryLargeImage),
+            .forEach(stylesheetPaths, { .stylesheet($0) }),
+            .viewport(.accordingToDevice),
+            .unwrap(site.favicon, { .favicon($0) }),
+            .unwrap(Path.defaultForRSSFeed, { path in
+                let title = "Subscribe to \(site.name)"
+                return .rssFeedLink(path.absoluteString, title: title)
+            }),
+            .unwrap(location.imagePath ?? site.imagePath, { path in
+                let url = site.url(for: path)
+                return .socialImageLink(url)
+            }),
+            .unwrap(site.plausibleSiteName, { siteName in
+                .script(.attribute(named: "defer"), .attribute(named: "data-domain", value: siteName), .src("https://plausible.io/js/plausible.js"))
+            })
         )
     }
 }
@@ -95,7 +156,7 @@ private extension Node where Context == HTML.BodyContext {
         .footer(
             .class("container footer"),
             .div(.class("separator")),
-            .p(
+            .div(
                 .class("responsive credit"),
                 "Made with ♥ by ",
                 .a(
@@ -114,14 +175,20 @@ private extension Node where Context == HTML.BodyContext {
     
     static func a(forAppStore link: AppStoreLink?) -> Node {
         guard let link = link else {
-            return .div(
-                "Soon on the  App Store"
-            )
+            return .empty
         }
         return .a(
-            .class("download"),
-            .href(link),
-            "Download on the  App Store"
+            .img(.src("/images/appstore.svg")),
+            .href(link)
+        )
+    }
+    
+    static func a(forTestFlight link: AppStoreLink?) -> Node {
+        guard let link = link else {
+            return .empty
+        }
+        return .div(
+            .a(.href(link), .text("Get latest beta from TestFlight."))
         )
     }
 }

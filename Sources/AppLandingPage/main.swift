@@ -28,6 +28,14 @@ extension Website {
     var appStoreLink: AppStoreLink? {
         nil //"https://itunes.apple.com/xyz"
     }
+    
+    var testflightLink: AppStoreLink? {
+        nil
+    }
+    
+    var plausibleSiteName: String? {
+        nil
+    }
 
     var credits: Link {
         ("Some Developer(s)", "https://")
