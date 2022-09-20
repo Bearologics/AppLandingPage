@@ -1,4 +1,4 @@
-// swift-tools-version:5.4
+// swift-tools-version:5.7
 
 import PackageDescription
 
@@ -8,12 +8,14 @@ let package = Package(
         .executable(name: "AppLandingPage", targets: ["AppLandingPage"])
     ],
     dependencies: [
-        .package(name: "Publish", url: "https://github.com/johnsundell/publish.git", from: "0.8.0")
+        .package(url: "https://github.com/johnsundell/publish.git", from: "0.8.0")
     ],
     targets: [
         .executableTarget(
             name: "AppLandingPage",
-            dependencies: ["Publish"]
+            dependencies: [
+                .product(name: "Publish", package: "publish")
+            ]
         )
     ]
 )
