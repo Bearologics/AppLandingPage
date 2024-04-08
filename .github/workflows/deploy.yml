@@ -13,10 +13,11 @@ jobs:
         uses: actions/checkout@v1
       - name: Build Site
         run: swift run
-      - name: Deploy to BunnyCDN
-        uses: Bearologics/BunnyAction@main
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
         with:
-          source: ./Output
-          storageZoneName: ${{ secrets.BUNNY_CDN_STORAGE_ZONE_NAME }}
-          accessKey: ${{ secrets.BUNNY_CDN_STORAGE_KEY }}
-          dangerouslyDeleteAllExistingData: true
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ env.CLOUDFLARE_PAGES_PROJECT_NAME }}"
+          directory: ./Output
+          branch: main
