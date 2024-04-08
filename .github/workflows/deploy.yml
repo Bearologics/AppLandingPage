@@ -21,3 +21,4 @@ jobs:
           projectName: ${{ env.CLOUDFLARE_PAGES_PROJECT_NAME }}"
           directory: ./Output
           branch: main
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
